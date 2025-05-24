@@ -31,8 +31,8 @@ export default function StartPage() {
 
   const handleStart = () => {
     if (!isStartDisabled) {
-      localStorage.setItem('player1', player1)
-      localStorage.setItem('player2', player2)
+      localStorage.setItem('player1', JSON.stringify(player1))
+      localStorage.setItem('player2', JSON.stringify(player2))
       navigate('/play')
     }
   }
