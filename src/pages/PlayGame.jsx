@@ -111,7 +111,7 @@ import { useNavigate } from 'react-router-dom'
     }
   
     return (
-        <div className="relative min-h-screen w-full bg-gradient-to-br from-violet-600 to-blue-700 p-4 md:p-20 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 text-white overflow-hidden">
+        <div className="relative min-h-screen w-full bg-gradient-to-br from-violet-600 to-blue-700 p-4 md:p-20 flex flex-col md:flex-row items-center justify-center gap-3 md:gap-10 text-white overflow-hidden">
           
           {floatingIcons.map((item, i) => (
             <div
@@ -129,7 +129,7 @@ import { useNavigate } from 'react-router-dom'
             <p className="text-sm text-white/80 mb-3 tracking-wide uppercase">
               Selected Category: <span className="font-bold text-yellow-300">{player1.category}</span>
             </p>
-            <div className="flex justify-center gap-2 flex-wrap">
+            <div className="md:flex justify-center gap-4 flex-wrap hidden">
               {allIcons[player1.category]?.map((Icon, i) => (
                 <Icon key={i} className="text-xl hover:scale-125 transition" title={Icon.displayName || 'Icon'} />
               ))}
@@ -139,7 +139,7 @@ import { useNavigate } from 'react-router-dom'
             </p>
           </div>
     
-          <div className="w-full md:w-2/4 flex flex-col items-center gap-6 px-14 py-6">
+          <div className="w-full md:w-2/4 flex flex-col items-center gap-4 px-14 py-6">
             <div className="grid grid-cols-3 gap-4 w-full max-w-sm">
               {board.map((cell, i) => (
                 <button
@@ -172,12 +172,12 @@ import { useNavigate } from 'react-router-dom'
             </p>
           </div>
     
-          <div className="bg-white/10 backdrop-blur-xl p-5 rounded-3xl shadow-xl w-full md:w-1/4 text-center border border-white/20 hover:scale-105 transition duration-300 space-y-6">
+          <div className="bg-white/10 backdrop-blur-xl p-3 md:p-5 rounded-3xl shadow-xl w-full md:w-1/4 text-center border border-white/20 hover:scale-105 transition duration-300 space-y-6">
             <h2 className="text-2xl font-semibold mb-2">{player2.name || 'Player 2'}</h2>
             <p className="text-sm text-white/80 mb-3 tracking-wide uppercase">
               Selected Category: <span className="font-bold text-yellow-300">{player2.category}</span>
             </p>
-            <div className="flex justify-center gap-2 flex-wrap">
+            <div className="md:flex justify-center gap-4 flex-wrap hidden">
               {allIcons[player2.category]?.map((Icon, i) => (
                 <Icon key={i} className="text-xl hover:scale-125 transition" title={Icon.displayName || 'Icon'} />
               ))}

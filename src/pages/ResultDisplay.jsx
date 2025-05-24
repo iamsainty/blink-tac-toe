@@ -64,7 +64,7 @@ export default function ResultDisplay() {
       {floatingIcons.map((item, i) => (
         <div
           key={i}
-          className={`absolute ${item.color} text-3xl sm:text-5xl lg:text-6xl animate-bounce pointer-events-none select-none transition-transform duration-500`}
+          className={`absolute ${item.color} text-3xl sm:text-5xl lg:text-6xl animate-pulse pointer-events-none select-none transition-transform duration-500`}
           style={{ top: item.top, left: item.left, animationDelay: `${i * 0.25}s` }}
         >
           {item.icon}
