@@ -33,6 +33,10 @@ export default function StartPage() {
     if (!isStartDisabled) {
       localStorage.setItem('player1', JSON.stringify(player1))
       localStorage.setItem('player2', JSON.stringify(player2))
+
+      const playerWins = { [player1.name]: 0, [player2.name]: 0 }
+
+      localStorage.setItem('playerWins', JSON.stringify(playerWins))
       navigate('/play')
     }
   }

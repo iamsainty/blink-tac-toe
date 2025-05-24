@@ -29,6 +29,7 @@ import { useNavigate } from 'react-router-dom'
   export default function PlayPage() {
     const [player1, setPlayer1] = useState({ name: '', category: '' })
     const [player2, setPlayer2] = useState({ name: '', category: '' })
+    const [playerWins, setPlayerWins] = useState({})
     const [currentTurn, setCurrentTurn] = useState('')
     const [board, setBoard] = useState(Array(9).fill(null))
     const [playerMoves, setPlayerMoves] = useState({ player1: [], player2: [] })
@@ -38,8 +39,10 @@ import { useNavigate } from 'react-router-dom'
     useEffect(() => {
       const p1 = JSON.parse(localStorage.getItem('player1'))
       const p2 = JSON.parse(localStorage.getItem('player2'))
+      const playerWins = JSON.parse(localStorage.getItem('playerWins'))
       setPlayer1(p1)
       setPlayer2(p2)
+      setPlayerWins(playerWins)
       setCurrentTurn(p1?.name || '')
     }, [])
   
@@ -78,7 +81,10 @@ import { useNavigate } from 'react-router-dom'
       setPlayerMoves(prev => ({ ...prev, [playerKey]: trimmedMoves }))
   
       if (checkWin(trimmedMoves)) {
-        const winner = player1.name;
+        const winner = currentTurn;
+        const playerWins = JSON.parse(localStorage.getItem('playerWins'))
+        playerWins[winner] = playerWins[winner] + 1
+        localStorage.setItem('playerWins', JSON.stringify(playerWins))
         localStorage.setItem('winner', winner)
         navigate('/result')
       }
@@ -100,7 +106,7 @@ import { useNavigate } from 'react-router-dom'
             </div>
           ))}
     
-          <div className="bg-white/10 backdrop-blur-xl p-5 rounded-3xl shadow-xl w-full md:w-1/4 text-center border border-white/20 hover:scale-105 transition duration-300">
+          <div className="bg-white/10 backdrop-blur-xl p-5 rounded-3xl shadow-xl w-full md:w-1/4 text-center border border-white/20 hover:scale-105 transition duration-300 space-y-6">
             <h2 className="text-2xl font-semibold mb-2">{player1.name || 'Player 1'}</h2>
             <p className="text-sm text-white/80 mb-3 tracking-wide uppercase">
               Selected Category: <span className="font-bold text-yellow-300">{player1.category}</span>
@@ -110,9 +116,12 @@ import { useNavigate } from 'react-router-dom'
                 <Icon key={i} className="text-xl hover:scale-125 transition" title={Icon.displayName || 'Icon'} />
               ))}
             </div>
+            <p className="text-md md:text-lg mt-2 bg-white/10 px-5 py-2 rounded-full border border-white/20 shadow-sm">
+              Wins: <span className="font-bold text-yellow-300">{playerWins[player1.name]}</span>
+            </p>
           </div>
     
-          <div className="w-full md:w-2/4 flex flex-col items-center gap-6">
+          <div className="w-full md:w-2/4 flex flex-col items-center gap-6 px-14 py-6">
             <div className="grid grid-cols-3 gap-4 w-full max-w-sm">
               {board.map((cell, i) => (
                 <button
@@ -145,7 +154,7 @@ import { useNavigate } from 'react-router-dom'
             </p>
           </div>
     
-          <div className="bg-white/10 backdrop-blur-xl p-5 rounded-3xl shadow-xl w-full md:w-1/4 text-center border border-white/20 hover:scale-105 transition duration-300">
+          <div className="bg-white/10 backdrop-blur-xl p-5 rounded-3xl shadow-xl w-full md:w-1/4 text-center border border-white/20 hover:scale-105 transition duration-300 space-y-6">
             <h2 className="text-2xl font-semibold mb-2">{player2.name || 'Player 2'}</h2>
             <p className="text-sm text-white/80 mb-3 tracking-wide uppercase">
               Selected Category: <span className="font-bold text-yellow-300">{player2.category}</span>
@@ -155,6 +164,9 @@ import { useNavigate } from 'react-router-dom'
                 <Icon key={i} className="text-xl hover:scale-125 transition" title={Icon.displayName || 'Icon'} />
               ))}
             </div>
+            <p className="text-md md:text-lg mt-2 bg-white/10 px-5 py-2 rounded-full border border-white/20 shadow-sm">
+              Wins: <span className="font-bold text-yellow-300">{playerWins[player2.name]}</span>
+            </p>
           </div>
         </div>
       )
