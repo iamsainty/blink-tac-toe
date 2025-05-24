@@ -8,7 +8,7 @@ import {
   FaGamepad,
   FaRegSmileWink,
 } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const floatingIcons = [
   { icon: <FaGamepad />, top: '10%', left: '22%', color: 'text-cyan-300', animation: 'animate-bounce' },
@@ -20,6 +20,14 @@ const floatingIcons = [
 ]
 
 export default function LandingPage() {
+  const navigate = useNavigate()
+
+  const handleStart = () => {
+    const audio = new Audio('/sound-effects/click.mp3')
+    audio.play()
+    navigate('/start')
+  }
+
   return (
     <div className="relative h-screen w-full bg-gradient-to-br from-violet-600 to-blue-700 overflow-hidden flex flex-col items-center justify-center px-6 text-center gap-4 md:gap-6">
       {floatingIcons.map((item, i) => (
@@ -49,11 +57,11 @@ export default function LandingPage() {
         Unpredictable. Hilarious. Competitive. Are you bold enough to take the challenge?
       </p>
 
-      <Link
-        to="/start"
+      <button
+        onClick={handleStart}
         className="relative bg-white text-violet-700 hover:bg-yellow-400 hover:text-black font-semibold py-3 px-8 rounded-2xl transition-all duration-300 shadow-xl inline-block mt-2">
         Let’s Blink It On!
-      </Link>
+      </button>
     </div>
   )
 }

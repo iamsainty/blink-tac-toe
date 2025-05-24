@@ -64,7 +64,19 @@ import { useNavigate } from 'react-router-dom'
     }
   
     const handleClick = (index) => {
-      if (board[index]) return
+      if (board[index]) {
+        const errorMoveAudio = new Audio('/sound-effects/error-move.mp3')
+        errorMoveAudio.play()
+        return
+      } 
+      const player1Audio = new Audio('/sound-effects/player1-move.mp3')
+      const player2Audio = new Audio('/sound-effects/player2-move.mp3')
+
+      if (currentTurn === player1.name) {
+        player1Audio.play()
+      } else {
+        player2Audio.play()
+      }
   
       const playerKey = currentTurn === player1.name ? 'player1' : 'player2'
       const category = playerKey === 'player1' ? player1.category : player2.category
@@ -86,6 +98,8 @@ import { useNavigate } from 'react-router-dom'
         playerWins[winner] = playerWins[winner] + 1
         localStorage.setItem('playerWins', JSON.stringify(playerWins))
         localStorage.setItem('winner', winner)
+        const winAudio = new Audio('/sound-effects/win.mp3')
+        winAudio.play()
         navigate('/result')
       }
   

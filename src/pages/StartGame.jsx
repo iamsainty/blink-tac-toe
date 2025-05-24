@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { useState } from 'react'
 import {
   FaDog, FaPizzaSlice, FaFutbol, FaSmile,
@@ -27,16 +28,23 @@ export default function StartPage() {
   const [player2, setPlayer2] = useState({ name: '', category: '' })
   const navigate = useNavigate()
 
+  const keypressAudio = useMemo(() => new Audio('/sound-effects/keypress.mp3'), [])
+
   const isStartDisabled = !player1.name || !player2.name || !player1.category || !player2.category
 
   const handleStart = () => {
     if (!isStartDisabled) {
+      const audio = new Audio('/sound-effects/click.mp3')
+      audio.play()
+
       localStorage.setItem('player1', JSON.stringify(player1))
       localStorage.setItem('player2', JSON.stringify(player2))
 
       const playerWins = { [player1.name]: 0, [player2.name]: 0 }
 
       localStorage.setItem('playerWins', JSON.stringify(playerWins))
+      const gameStartAudio = new Audio('/sound-effects/game-start.mp3')
+      gameStartAudio.play()
       navigate('/play')
     }
   }
@@ -78,6 +86,10 @@ export default function StartPage() {
               type="text"
               placeholder="Your name here..."
               value={state.name}
+              onKeyDown={() => {
+                keypressAudio.currentTime = 0
+                keypressAudio.play()
+              }}
               onChange={(e) => setState({ ...state, name: e.target.value })}
               className="w-full p-3 font-bold rounded-lg bg-white text-black mb-4"
             />
@@ -86,7 +98,11 @@ export default function StartPage() {
                 <button
                   key={name}
                   disabled={isCategoryDisabled(name, num)}
-                  onClick={() => setState({ ...state, category: name })}
+                  onClick={() => {
+                    const audio = new Audio('/sound-effects/click.mp3')
+                    audio.play()
+                    setState({ ...state, category: name })
+                  }}
                   className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300
                     ${state.category === name ? 'bg-yellow-400 text-black' : 'bg-white/20 hover:bg-white/30 text-white'}
                     ${isCategoryDisabled(name, num) ? 'opacity-30 cursor-not-allowed' : ''}`}
@@ -100,7 +116,7 @@ export default function StartPage() {
       </div>
 
       <button
-        onClick={handleStart}
+        onClick={handleStart}        
         disabled={isStartDisabled}
         className={`mt-8 px-10 py-3 rounded-xl font-semibold text-lg shadow-xl transition-all duration-300
           ${isStartDisabled

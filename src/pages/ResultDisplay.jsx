@@ -41,11 +41,15 @@ export default function ResultDisplay() {
 
   const handleRematch = () => {
     localStorage.removeItem('winner')
+    const audio = new Audio('/sound-effects/game-start.mp3')
+    audio.play()
     navigate('/play')
   }
 
   const handleNewGame = () => {
     localStorage.clear()
+    const clickAudio = new Audio('/sound-effects/click.mp3')
+    clickAudio.play()
     navigate('/start')
   }
 
