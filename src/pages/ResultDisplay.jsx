@@ -37,6 +37,10 @@ export default function ResultDisplay() {
     setPlayer1(p1)
     setPlayer2(p2)
     setPlayerWins(wins)
+
+    if(!p1 || !p2 || !winnerName) {
+      navigate('/start')
+    }
   }, [])
 
   const handleRematch = () => {

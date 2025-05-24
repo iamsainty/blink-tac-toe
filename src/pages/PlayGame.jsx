@@ -44,6 +44,10 @@ import { useNavigate } from 'react-router-dom'
       setPlayer2(p2)
       setPlayerWins(playerWins)
       setCurrentTurn(p1?.name || '')
+
+      if(!p1 || !p2) {
+        navigate('/start')
+      }
     }, [])
   
     const getRandomIcon = (category) => {
