@@ -27,7 +27,12 @@ export default function StartPage() {
   const navigate = useNavigate()
 
   const keypressAudio = useMemo(() => new Audio('/sound-effects/keypress.mp3'), [])
-  const isStartDisabled = !player1.name || !player2.name || !player1.category || !player2.category
+  const isStartDisabled =
+  !player1.name ||
+  !player2.name ||
+  !player1.category ||
+  !player2.category ||
+  player1.name.trim().toLowerCase() === player2.name.trim().toLowerCase()
 
   const handleStart = () => {
     if (!isStartDisabled) {
@@ -71,6 +76,12 @@ export default function StartPage() {
       <p className="text-white text-sm sm:text-base md:text-lg max-w-3xl drop-shadow-md px-2 leading-relaxed">
         Enter your names and choose a category that best reflects your vibe.
       </p>
+
+      {isStartDisabled && (
+        <p className="text-white opacity-75 text-xs sm:text-base md:text-lg max-w-3xl drop-shadow-md leading-relaxed">
+          Name and category should be different for both players.
+        </p>
+      )}
 
       {/* Player Inputs */}
       <div className="grid md:grid-cols-2 gap-4 md:gap-10 w-full max-w-5xl mt-2">

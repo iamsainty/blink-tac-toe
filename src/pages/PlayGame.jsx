@@ -152,12 +152,12 @@ import { useNavigate } from 'react-router-dom'
                     ${
                       board[i]
                         ? board[i].player === 'player1'
-                          ? 'bg-red-500'
-                          : 'bg-cyan-500'
+                          ? 'bg-green-400'
+                          : 'bg-sky-400'
                         : hoverIndex === i
                         ? currentTurn === player1.name
-                          ? 'bg-red-300'
-                          : 'bg-cyan-300'
+                          ? 'bg-green-400'
+                          : 'bg-sky-400'
                         : 'bg-white/20 hover:ring-2 hover:ring-yellow-200'
                     }
                   `}
