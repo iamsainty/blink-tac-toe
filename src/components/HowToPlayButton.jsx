@@ -11,10 +11,12 @@ const HowToPlayButton = ({ setShowGuide }) => {
   return (
     <button
       onClick={handleShowGuide}
-      className="absolute top-6 right-6 z-30 flex items-center gap-2 bg-gradient-to-r from-sky-400 to-blue-500 text-black font-semibold px-4 py-2 rounded-full shadow-lg hover:scale-105 hover:shadow-xl transition duration-300"
+      className="z-30 flex items-center justify-center w-full gap-2 text-black font-semibold"
     >
-      <FaQuestionCircle className="text-lg" />
-      How to Play?
+      <div className='flex items-center gap-2 bg-gradient-to-r from-sky-400 to-blue-500 m-4 md:mt-8 px-4 py-2 rounded-full shadow-lg hover:scale-105 transition duration-300'>
+        <FaQuestionCircle className="text-lg" />
+        How to Play?
+      </div>
     </button>
   )
 }

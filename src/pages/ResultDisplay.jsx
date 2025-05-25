@@ -58,7 +58,7 @@ export default function ResultDisplay() {
   }
 
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center text-white text-center px-4 sm:px-6 py-10 sm:py-16 gap-8 overflow-hidden">
+    <div className="relative min-h-[90vh] flex flex-col items-center justify-center text-white text-center px-4 sm:px-6 py-10 sm:py-16 gap-8 overflow-hidden">
       
       {/* Floating Icons */}
       {floatingIcons.map((item, i) => (

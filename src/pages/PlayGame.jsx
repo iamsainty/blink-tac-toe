@@ -111,7 +111,7 @@ import { useNavigate } from 'react-router-dom'
     }
   
     return (
-        <div className="relative w-full p-4 md:p-20 flex flex-col md:flex-row items-center justify-center gap-3 md:gap-10 text-white overflow-hidden">
+        <div className="relative min-h-[90vh] w-full p-4 md:p-20 flex flex-col md:flex-row items-center justify-center gap-3 md:gap-10 text-white overflow-hidden">
           
           {floatingIcons.map((item, i) => (
             <div
