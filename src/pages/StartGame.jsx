@@ -14,7 +14,7 @@ const categories = [
 ]
 
 const floatingIcons = [
-  { icon: <FaDog />, top: '12%', left: '20%', color: 'text-cyan-300', animation: 'animate-pulse' },
+  { icon: <FaDog />, top: '8%', left: '15%', color: 'text-cyan-300', animation: 'animate-pulse' },
   { icon: <FaPizzaSlice />, top: '18%', left: '75%', color: 'text-pink-400', animation: 'animate-pulse' },
   { icon: <FaFutbol />, top: '70%', left: '12%', color: 'text-blue-400', animation: 'animate-pulse' },
   { icon: <FaLeaf />, top: '78%', left: '60%', color: 'text-purple-300', animation: 'animate-pulse' },
@@ -44,7 +44,7 @@ export default function StartPage() {
     player === 1 ? player2.category === catName : player1.category === catName
 
   return (
-    <div className="relative min-h-screen w-full bg-gradient-to-br from-violet-600 to-blue-700 overflow-hidden flex flex-col items-center justify-center px-4 py-10 text-center gap-4 sm:px-6 sm:gap-6 md:gap-8">
+    <div className="relative min-h-screen w-full bg-gradient-to-br from-violet-600 to-blue-700 overflow-hidden flex flex-col items-center justify-center px-4 text-center gap-4 sm:px-6 sm:gap-6 md:gap-8">
 
       {/* Floating Icons */}
       {floatingIcons.map((item, i) => (
@@ -86,7 +86,7 @@ export default function StartPage() {
                 keypressAudio.play()
               }}
               onChange={(e) => setState({ ...state, name: e.target.value })}
-              className="w-full p-2 sm:p-3 font-semibold rounded-lg bg-white text-black mb-4 text-sm sm:text-base"
+              className="w-full p-2 sm:p-3 font-semibold rounded-lg bg-white text-black mb-4 text-sm sm:text-base text-voilet-500"
             />
             <div className="flex flex-wrap justify-center gap-2">
               {categories.map(({ name, icon }) => (
@@ -97,7 +97,7 @@ export default function StartPage() {
                     new Audio('/sound-effects/click.mp3').play()
                     setState({ ...state, category: name })
                   }}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-full text-sm sm:text-base font-semibold transition-all duration-300
+                  className={`flex items-center gap-2 px-4 py-1 rounded-full text-sm sm:text-base font-semibold transition-all duration-300
                     ${state.category === name ? 'bg-yellow-400 text-black' : 'bg-white/20 hover:bg-white/30 text-white'}
                     ${isCategoryDisabled(name, num) ? 'opacity-30 cursor-not-allowed' : ''}`}
                 >

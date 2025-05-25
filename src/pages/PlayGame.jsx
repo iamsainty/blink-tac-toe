@@ -22,8 +22,8 @@ import { useNavigate } from 'react-router-dom'
     { icon: <FaPizzaSlice />, top: '18%', left: '75%', color: 'text-pink-400', animation: 'pulse' },
     { icon: <FaFutbol />, top: '70%', left: '12%', color: 'text-blue-400', animation: 'pulse' },
     { icon: <FaLeaf />, top: '78%', left: '60%', color: 'text-purple-300', animation: 'pulse' },
-    { icon: <FaSmile />, top: '70%', left: '83%', color: 'text-yellow-300', animation: 'pulse' },
-    { icon: <FaTree />, top: '40%', left: '30%', color: 'text-green-300', animation: 'pulse' },
+    { icon: <FaSmile />, top: '55%', left: '83%', color: 'text-yellow-300', animation: 'pulse' },
+    { icon: <FaTree />, top: '40%', left: '10%', color: 'text-green-300', animation: 'pulse' },
   ]
   
   export default function PlayPage() {
@@ -167,7 +167,7 @@ import { useNavigate } from 'react-router-dom'
                 </button>
               ))}
             </div>
-            <p className="text-md md:text-lg mt-2 bg-white/10 px-5 py-2 rounded-full border border-white/20 shadow-sm">
+            <p className="text-md md:text-lg mt-2 bg-white/10 px-5 py-1 rounded-full border border-white/20 shadow-sm">
               Current Turn: <span className="font-bold text-yellow-300">{currentTurn}</span>
             </p>
           </div>
