@@ -44,7 +44,7 @@ export default function StartPage() {
     player === 1 ? player2.category === catName : player1.category === catName
 
   return (
-    <div className="relative min-h-screen w-full bg-gradient-to-br from-violet-600 to-blue-700 overflow-hidden flex flex-col items-center justify-center px-4 text-center gap-4 sm:px-6 sm:gap-6 md:gap-8">
+    <div className="relative min-h-screen w-full overflow-hidden flex flex-col items-center justify-center px-4 text-center gap-4 sm:px-6 sm:gap-6 md:gap-8">
 
       {/* Floating Icons */}
       {floatingIcons.map((item, i) => (
